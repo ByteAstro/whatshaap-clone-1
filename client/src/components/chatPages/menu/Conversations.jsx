@@ -13,7 +13,6 @@ const Conversations = ({ text }) => {
             const filteredData = fetchedUsers.filter(user => {
                 return user.name.toLowerCase().includes(text.toLowerCase());
             })
-            console.log(typeof fetchedUsers);
             setUsers(filteredData);
         };
         fetchData();

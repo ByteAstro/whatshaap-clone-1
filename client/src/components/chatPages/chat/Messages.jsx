@@ -1,6 +1,30 @@
+/* eslint-disable react/prop-types */
+import { AccountContext } from '../../../context/AccountProvider';
+import { useContext, useState } from 'react';
 import ChatFooter from './ChatFooter'
+import { saveNewMessage } from '../../../service/api';
 
-const Messages = () => {
+const Messages = ({ person, conversation }) => {
+    const { account } = useContext(AccountContext);
+
+    const [textMsg, setTextMsg] = useState('');
+
+    const sendTextMsg = async (e) => {
+        const keyPressed = e.keycode || e.which;
+        if (keyPressed === 13) {
+            let message = {
+                senderId: account.sub,
+                receiverId: person.sub,
+                conversationId: conversation._id,
+                type: 'text',
+                text: textMsg
+            };
+
+            await saveNewMessage(message);
+            setTextMsg('');
+        }
+    }
+
     return (
         <div className='flex flex-col justify-between h-[92%] '>
 
@@ -13,7 +37,11 @@ const Messages = () => {
                 <div className="chat-bubble">It was said that you would, destroy the Sith, not join them.</div>
             </div>
 
-            <ChatFooter />
+            <ChatFooter
+                setTextMsg={setTextMsg}
+                textMsg={textMsg}
+                sendTextMsg={sendTextMsg}
+            />
 
         </div>
     )

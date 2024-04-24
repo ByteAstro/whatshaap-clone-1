@@ -31,8 +31,29 @@ export const setConversation = async (data) => {
     // data = {senderId: account.sub, receiverId: user.sub}
     await axios.post(`${backend_endpoint}/conversation/add`, data)
         .then((response) => {
-            console.log('CONVERSATION ADDED', response);
+            // console.log('CONVERSATION ADDED', response);
         }).catch((err) => {
-            console.log('Error while calling GET_/users: ', err.message);
+            console.log('Error while calling POST_/setconversation: ', err.message);
+        })
+}
+
+export const getConversation = async (data) => {
+    let conversationObject;
+    await axios.post(`${backend_endpoint}/conversation/get`, data)
+        .then((response) => {
+            conversationObject = response.data;
+            // console.log('CONVERSATION FETCHED', response);
+        }).catch((err) => {
+            console.log('Error while calling POST_/getconversation: ', err.message);
+        })
+    return conversationObject;
+}
+
+export const saveNewMessage = async (data) => {
+    await axios.post(`${backend_endpoint}/message/add`, data)
+        .then((response) => {
+            // console.log('CONVERSATION FETCHED', response);
+        }).catch((err) => {
+            console.log('Error while calling POST_/saveNewMessage: ', err.message);
         })
 }
