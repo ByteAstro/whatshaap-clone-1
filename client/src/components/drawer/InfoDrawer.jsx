@@ -4,8 +4,8 @@ import InfoDrawerProfile from "./InfoDrawerProfile";
 
 const InfoDrawer = ({ isInfoDrawerOpen, toggleInfoDrawerOpen }) => {
     return (
-        <div className={`drawer absolute left-0 top-0 h-full transition-all
-            ${isInfoDrawerOpen ? 'left-0' : '-left-full'}
+        <div className={`drawer absolute top-0 h-full transition-all 
+            ${isInfoDrawerOpen ? 'left-0' : '-left-[100%]'}
 `}>
             <div className={"drawer-open"}>
                 <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
