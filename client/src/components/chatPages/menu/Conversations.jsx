@@ -3,17 +3,21 @@ import { getUsers } from '../../../service/api';
 import Conversation from './Conversation';
 import { AccountContext } from '../../../context/AccountProvider';
 
-const Conversations = () => {
+const Conversations = ({ text }) => {
     const { account } = useContext(AccountContext);
 
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             let fetchedUsers = await getUsers();
-            setUsers(fetchedUsers);
+            const filteredData = fetchedUsers.filter(user => {
+                return user.name.toLowerCase().includes(text.toLowerCase());
+            })
+            console.log(typeof fetchedUsers);
+            setUsers(filteredData);
         };
         fetchData();
-    }, []);
+    }, [text]);
 
     return (
         <div>

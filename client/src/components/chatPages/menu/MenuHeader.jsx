@@ -21,7 +21,7 @@ const MenuHeader = () => {
     }
 
     return (
-        <div className="h-11 px-3 py-1 flex items-center justify-between">
+        <div className="h-14 px-3 py-1 bg-slate-400 flex mb-2 items-center justify-between">
             <img src={account.picture} alt="dp"
                 className="w-7 rounded-md cursor-pointer"
                 onClick={toggleInfoDrawerOpen}

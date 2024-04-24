@@ -20,10 +20,12 @@ const EXAMPLE_USER = {
 
 const AccountProvider = ({ children }) => {
     const [account, setAccount] = useState(EXAMPLE_USER);
+    const [person, setPerson] = useState({});
 
     return (
         <AccountContext.Provider value={{
-            account, setAccount
+            account, setAccount,
+            person, setPerson
         }}>
             {children}
         </AccountContext.Provider>

@@ -1,6 +1,6 @@
 import { IoSearch } from "react-icons/io5";
 
-const MenuSearch = () => {
+const MenuSearch = ({ setText }) => {
     return (
         <div>
             <div className="flex items-center justify-between mx-2 mb-2 rounded-md bg-slate-800">
@@ -9,7 +9,9 @@ const MenuSearch = () => {
                 </div>
                 <input type="text"
                     className="input w-[90%] text-white focus-within:outline-0 bg-slate-800 rounded-none h-10 text-sm"
-                    placeholder="Search" />
+                    placeholder="Search"
+                    onChange={e => setText(e.target.value)}
+                />
             </div>
         </div>
     )

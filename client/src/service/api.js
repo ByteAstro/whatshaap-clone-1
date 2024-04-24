@@ -26,3 +26,13 @@ export const getUsers = async () => {
         });
     return fetchedUsers;
 }
+
+export const setConversation = async (data) => {
+    // data = {senderId: account.sub, receiverId: user.sub}
+    await axios.post(`${backend_endpoint}/conversation/add`, data)
+        .then((response) => {
+            console.log('CONVERSATION ADDED', response);
+        }).catch((err) => {
+            console.log('Error while calling GET_/users: ', err.message);
+        })
+}
