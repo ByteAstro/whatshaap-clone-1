@@ -18,3 +18,14 @@ exports.saveNewMessage = async (req, res) => {
         return res.status(500).json(err.message);
     }
 }
+
+exports.getConversationMessages = async (req, res) => {
+    try {
+        const conversationId = req.params.conversationId
+        const messages = await Message.find({ conversationId });
+        return res.status(200).json(messages);
+    } catch (err) {
+        console.log(err.message);
+        return res.status(500).json(err.message);
+    }
+}

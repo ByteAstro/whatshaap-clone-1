@@ -57,3 +57,15 @@ export const saveNewMessage = async (data) => {
             console.log('Error while calling POST_/saveNewMessage: ', err.message);
         })
 }
+
+export const getConversationMessages = async (conversationId) => {
+    let allConversationMessages;
+    await axios.get(`${backend_endpoint}/message/get/${conversationId}`)
+        .then((response) => {
+            allConversationMessages = response.data;
+            // console.log('CONVERSATION FETCHED', response);
+        }).catch((err) => {
+            console.log('Error while calling GET_/getMessages_WITH_conversationId: ', err.message);
+        });
+    return allConversationMessages;
+}
